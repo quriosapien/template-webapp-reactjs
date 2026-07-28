@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
 import logoUrl from '@/assets/logo.svg';
 import { config } from '@/config';
+import { ROUTES } from '@/routes';
 
 export function HomePage() {
   return (
@@ -10,7 +11,7 @@ export function HomePage() {
       <p className="mb-8 text-slate-600">
         React 19 + TS7 + Vite template with JWT auth, routing, and state management.
       </p>
-      <Link to="/dashboard" className="font-semibold text-indigo-600 underline">
+      <Link to={ROUTES.dashboard} className="font-semibold text-indigo-600 underline">
         Go to dashboard (protected)
       </Link>
     </main>

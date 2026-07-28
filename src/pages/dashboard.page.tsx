@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router';
+import { ROUTES } from '@/routes';
 import { useAuthStore } from '@/stores/auth.store';
 
 export function DashboardPage() {
@@ -8,7 +9,7 @@ export function DashboardPage() {
 
   async function handleLogout() {
     await logout();
-    navigate('/login', { replace: true });
+    navigate(ROUTES.login, { replace: true });
   }
 
   return (

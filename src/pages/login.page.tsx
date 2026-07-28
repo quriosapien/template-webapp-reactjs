@@ -1,6 +1,7 @@
 import type { FormEvent } from 'react';
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
+import { ROUTES } from '@/routes';
 import { useAuthStore } from '@/stores/auth.store';
 
 // Literal (not imported from @/mocks) so production bundles never pull in MSW.
@@ -20,7 +21,7 @@ export function LoginPage() {
     event.preventDefault();
     await login(email, password);
     if (useAuthStore.getState().status === 'authenticated') {
-      const from = (location.state as { from?: string } | null)?.from ?? '/dashboard';
+      const from = (location.state as { from?: string } | null)?.from ?? ROUTES.dashboard;
       navigate(from, { replace: true });
     }
   }

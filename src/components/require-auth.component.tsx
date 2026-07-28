@@ -1,4 +1,5 @@
 import { Navigate, Outlet, useLocation } from 'react-router';
+import { ROUTES } from '@/routes';
 import { useAuthStore } from '@/stores/auth.store';
 
 /** Route-group guard: wrap protected <Route>s so children render via <Outlet />. */
@@ -11,7 +12,7 @@ export function RequireAuth() {
   }
 
   if (status !== 'authenticated') {
-    return <Navigate to="/login" replace state={{ from: location.pathname }} />;
+    return <Navigate to={ROUTES.login} replace state={{ from: location.pathname }} />;
   }
 
   return <Outlet />;
