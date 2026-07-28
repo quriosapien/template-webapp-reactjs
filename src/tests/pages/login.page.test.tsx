@@ -3,8 +3,8 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Route, Routes } from 'react-router';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { DEMO_PASSWORD, DEMO_USER } from '@/mocks/handlers';
+import { LoginPage } from '@/pages/login.page';
 import { useAuthStore } from '@/stores/auth.store';
-import { LoginPage } from './login.page';
 
 function renderLogin() {
   return render(

@@ -73,7 +73,7 @@ src/
   mocks/        # MSW request handlers, node server, browser worker
   pages/        # route-level components (*.page.tsx)
   stores/       # Zustand stores (*.store.ts)
-  test/         # Vitest setup file
+  tests/        # Vitest specs (*.test.ts(x)), mirroring src/, plus the setup file
   types/        # shared TypeScript types (*.types.ts)
   utils/        # framework-agnostic helpers (*.util.ts)
   assets/       # images processed by Vite (hashed, optimized)
@@ -151,7 +151,7 @@ alias (never long relative paths):
 | `*.client.ts` | Low-level network client |
 | `*.util.ts` | Framework-agnostic helper |
 | `*.types.ts` | Shared TypeScript types |
-| `*.test.ts(x)` | Test, colocated next to the unit under test |
+| `*.test.ts(x)` | Test, under `src/tests/` mirroring the unit's path |
 
 ## Code style consistency
 

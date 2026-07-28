@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router';
 import { beforeEach, describe, expect, it } from 'vitest';
+import { RequireAuth } from '@/components/require-auth.component';
 import { DEMO_USER } from '@/mocks/handlers';
 import { useAuthStore } from '@/stores/auth.store';
-import { RequireAuth } from './require-auth.component';
 
 function renderDashboardRoute() {
   return render(

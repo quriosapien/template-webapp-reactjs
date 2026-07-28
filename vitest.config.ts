@@ -13,7 +13,7 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     include: ['src/**/*.test.{ts,tsx}'],
-    setupFiles: ['src/test/setup.ts'],
+    setupFiles: ['src/tests/setup.ts'],
     // Node's fetch (used by Vitest even under jsdom) rejects relative URLs, so
     // tests need an absolute API base. MSW handlers use `*/api/...` wildcards
     // so they match both this absolute base and the browser's relative `/api`.
@@ -29,7 +29,7 @@ export default defineConfig({
         'src/**/*.types.ts',
         'src/**/*.d.ts',
         'src/mocks/**',
-        'src/test/**',
+        'src/tests/**',
       ],
     },
   },
