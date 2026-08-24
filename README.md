@@ -9,7 +9,7 @@ real backend), and Tailwind CSS v4 for styling.
 
 | Tool | Purpose |
 | --- | --- |
-| [tsgo](https://github.com/microsoft/typescript-go) (`@typescript/native-preview`) | TypeScript 7 typechecking (`npm run typecheck`) |
+| [TypeScript 7](https://www.typescriptlang.org) | Typechecking via `tsc --noEmit` (`npm run typecheck`) — the native Go compiler |
 | [Biome](https://biomejs.dev) | Linting and formatting — no ESLint, no Prettier |
 | [Vite](https://vitejs.dev) | Dev server and production build |
 | [Vitest](https://vitest.dev) + [React Testing Library](https://testing-library.com/react) + [MSW](https://mswjs.io) | Unit and component tests, with a mocked network layer |
@@ -39,7 +39,7 @@ Open the printed URL and sign in with the demo credentials
 | `npm run dev` | Start the Vite dev server |
 | `npm run build` | Typecheck, then build for production |
 | `npm run preview` | Preview the production build locally |
-| `npm run typecheck` | Run `tsgo --noEmit` |
+| `npm run typecheck` | Run `tsc --noEmit` |
 | `npm run lint` | Check lint/format issues with Biome |
 | `npm run lint:fix` | Fix lint/format issues with Biome |
 | `npm run lint:ci` | Biome check in CI mode (no writes) |
