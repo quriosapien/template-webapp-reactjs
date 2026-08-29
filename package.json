@@ -23,25 +23,25 @@
   "dependencies": {
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "react-router": "^8.3.0",
-    "zod": "^4.4.3",
+    "react-router": "^8.3.1",
+    "zod": "^4.5.4",
     "zustand": "^5.0.15"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.10",
+    "@biomejs/biome": "^2.5.11",
     "@tailwindcss/vite": "^4.3.3",
     "@testing-library/jest-dom": "^7.0.1",
-    "@testing-library/react": "^16.3.2",
+    "@testing-library/react": "^16.3.3",
     "@testing-library/user-event": "^14.6.6",
-    "@types/node": "^26.2.0",
+    "@types/node": "^26.4.0",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.5",
-    "@vitejs/plugin-react": "^6.1.0",
+    "@vitejs/plugin-react": "^6.1.1",
     "jsdom": "^30.0.1",
-    "lefthook": "^2.1.10",
+    "lefthook": "^2.1.12",
     "msw": "^2.15.0",
-    "sharp": "^0.35.3",
-    "svgo": "^4.0.2",
+    "sharp": "^0.35.4",
+    "svgo": "^4.1.0",
     "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2",
     "vite": "^8.2.2",
@@ -49,7 +49,7 @@
     "vitest": "^4.1.11"
   },
   "allowScripts": {
-    "lefthook@2.1.10": true,
+    "lefthook@2.1.12": true,
     "fsevents@2.3.3": true,
     "msw@2.15.0": true
   },
