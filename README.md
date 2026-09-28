@@ -19,6 +19,7 @@ real backend), and Tailwind CSS v4 for styling.
 ## Requirements
 
 - Node.js >= 26 (see `.nvmrc`; run `nvm use`)
+- npm >= 12. Node 26 bundles npm 11, so run `npm install -g npm@12` once per Node install. Enforced by `devEngines`: on an older Node or npm, npm commands fail with `EBADDEVENGINES`.
 
 ## Getting started
 
