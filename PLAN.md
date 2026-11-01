@@ -145,7 +145,13 @@ npm-debug.log*
   },
   "files": {
     "ignoreUnknown": true,
-    "includes": ["**", "!**/dist", "!**/node_modules", "!**/coverage", "!**/public/mockServiceWorker.js"]
+    "includes": [
+      "**",
+      "!**/dist",
+      "!**/node_modules",
+      "!**/coverage",
+      "!**/public/mockServiceWorker.js"
+    ]
   },
   "assist": { "actions": { "source": { "organizeImports": "on" } } },
   "formatter": {
@@ -190,7 +196,7 @@ pre-commit:
   parallel: true
   commands:
     biome:
-      glob: '*.{js,ts,jsx,tsx,json,jsonc,css}'
+      glob: "*.{js,ts,jsx,tsx,json,jsonc,css}"
       run: npx biome check --write --no-errors-on-unmatched {staged_files}
       stage_fixed: true
 ```
@@ -323,7 +329,7 @@ cp .env.example .env.local
 `src/styles/index.css`:
 
 ```css
-@import 'tailwindcss';
+@import "tailwindcss";
 ```
 
 `src/types/vite-env.d.ts` (typed `import.meta.env`; optional strings because Zod validates in Task 2):
@@ -450,7 +456,13 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'html'],
       include: ['src/**/*.{ts,tsx}'],
-      exclude: ['src/**/*.test.*', 'src/**/*.types.ts', 'src/**/*.d.ts', 'src/mocks/**', 'src/test/**'],
+      exclude: [
+        'src/**/*.test.*',
+        'src/**/*.types.ts',
+        'src/**/*.d.ts',
+        'src/mocks/**',
+        'src/test/**',
+      ],
     },
   },
 });
@@ -1081,7 +1093,9 @@ describe('httpRequest', () => {
   });
 
   it('throws HttpError with status and body for non-401 failures', async () => {
-    server.use(http.get('*/api/broken', () => HttpResponse.json({ message: 'boom' }, { status: 500 })));
+    server.use(
+      http.get('*/api/broken', () => HttpResponse.json({ message: 'boom' }, { status: 500 })),
+    );
 
     const failure = await httpRequest('/broken').catch((error: unknown) => error);
 
@@ -1097,7 +1111,9 @@ describe('httpRequest', () => {
         refreshCalls += 1;
         return HttpResponse.json({ message: 'nope' }, { status: 401 });
       }),
-      http.get('*/api/public', () => HttpResponse.json({ message: 'unauthorized' }, { status: 401 })),
+      http.get('*/api/public', () =>
+        HttpResponse.json({ message: 'unauthorized' }, { status: 401 }),
+      ),
     );
 
     await expect(httpRequest('/public', { skipAuth: true })).rejects.toBeInstanceOf(HttpError);
@@ -1213,7 +1229,11 @@ import type { LoginRequest, LoginResponse, User } from '@/types/auth.types';
 export const authApi = {
   /** skipAuth: a login must never trigger the refresh flow. */
   login: (credentials: LoginRequest) =>
-    httpRequest<LoginResponse>('/auth/login', { method: 'POST', body: credentials, skipAuth: true }),
+    httpRequest<LoginResponse>('/auth/login', {
+      method: 'POST',
+      body: credentials,
+      skipAuth: true,
+    }),
 
   logout: () => httpRequest<void>('/auth/logout', { method: 'POST' }),
 

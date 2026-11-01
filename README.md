@@ -7,14 +7,14 @@ real backend), and Tailwind CSS v4 for styling.
 
 ## Toolchain
 
-| Tool | Purpose |
-| --- | --- |
-| [TypeScript 7](https://www.typescriptlang.org) | Typechecking via `tsc --noEmit` (`npm run typecheck`) — the native Go compiler |
-| [Biome](https://biomejs.dev) | Linting and formatting — no ESLint, no Prettier |
-| [Vite](https://vitejs.dev) | Dev server and production build |
-| [Vitest](https://vitest.dev) + [React Testing Library](https://testing-library.com/react) + [MSW](https://mswjs.io) | Unit and component tests, with a mocked network layer |
-| [lefthook](https://github.com/evilmartians/lefthook) | Git hooks (pre-commit lint) |
-| [Tailwind CSS v4](https://tailwindcss.com) | Utility-first styling via `@tailwindcss/vite` |
+| Tool                                                                                                                | Purpose                                                                        |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| [TypeScript 7](https://www.typescriptlang.org)                                                                      | Typechecking via `tsc --noEmit` (`npm run typecheck`) — the native Go compiler |
+| [Biome](https://biomejs.dev)                                                                                        | Linting and formatting — no ESLint, no Prettier                                |
+| [Vite](https://vitejs.dev)                                                                                          | Dev server and production build                                                |
+| [Vitest](https://vitest.dev) + [React Testing Library](https://testing-library.com/react) + [MSW](https://mswjs.io) | Unit and component tests, with a mocked network layer                          |
+| [lefthook](https://github.com/evilmartians/lefthook)                                                                | Git hooks (pre-commit lint)                                                    |
+| [Tailwind CSS v4](https://tailwindcss.com)                                                                          | Utility-first styling via `@tailwindcss/vite`                                  |
 
 ## Requirements
 
@@ -35,19 +35,19 @@ Open the printed URL and sign in with the demo credentials
 
 ## Scripts
 
-| Script | Description |
-| --- | --- |
-| `npm run dev` | Start the Vite dev server |
-| `npm run build` | Typecheck, then build for production |
-| `npm run preview` | Preview the production build locally |
-| `npm run typecheck` | Run `tsc --noEmit` |
-| `npm run lint` | Check lint/format issues with Biome |
-| `npm run lint:fix` | Fix lint/format issues with Biome |
-| `npm run lint:ci` | Biome check in CI mode (no writes) |
-| `npm run format` | Format files with Biome |
-| `npm test` | Run the test suite once |
-| `npm run test:watch` | Run the test suite in watch mode |
-| `npm run prepare` | Install git hooks (runs automatically after `npm install`) |
+| Script               | Description                                                |
+| -------------------- | ---------------------------------------------------------- |
+| `npm run dev`        | Start the Vite dev server                                  |
+| `npm run build`      | Typecheck, then build for production                       |
+| `npm run preview`    | Preview the production build locally                       |
+| `npm run typecheck`  | Run `tsc --noEmit`                                         |
+| `npm run lint`       | Check lint/format issues with Biome                        |
+| `npm run lint:fix`   | Fix lint/format issues with Biome                          |
+| `npm run lint:ci`    | Biome check in CI mode (no writes)                         |
+| `npm run format`     | Format files with Biome                                    |
+| `npm test`           | Run the test suite once                                    |
+| `npm run test:watch` | Run the test suite in watch mode                           |
+| `npm run prepare`    | Install git hooks (runs automatically after `npm install`) |
 
 ## Environment configuration
 
@@ -124,12 +124,12 @@ DEV_PROXY_TARGET=http://localhost:3000
 `DEV_PROXY=true` makes `vite.config.ts` proxy `/api/*` to `DEV_PROXY_TARGET`.
 Your backend must implement this contract:
 
-| Method | Path | Request | Response |
-| --- | --- | --- | --- |
-| `POST` | `/api/auth/login` | `{ email, password }` | `{ user, accessToken, refreshToken }` |
-| `POST` | `/api/auth/refresh` | `{ refreshToken }` | `{ accessToken, refreshToken }` |
-| `POST` | `/api/auth/logout` | — (bearer token) | `204 No Content` |
-| `GET` | `/api/auth/me` | — (bearer token) | `user` |
+| Method | Path                | Request               | Response                              |
+| ------ | ------------------- | --------------------- | ------------------------------------- |
+| `POST` | `/api/auth/login`   | `{ email, password }` | `{ user, accessToken, refreshToken }` |
+| `POST` | `/api/auth/refresh` | `{ refreshToken }`    | `{ accessToken, refreshToken }`       |
+| `POST` | `/api/auth/logout`  | — (bearer token)      | `204 No Content`                      |
+| `GET`  | `/api/auth/me`      | — (bearer token)      | `user`                                |
 
 ## `public/` vs. `src/assets/`
 
@@ -143,16 +143,16 @@ Your backend must implement this contract:
 Files are kebab-case with a role suffix, imported exclusively via the `@/`
 alias (never long relative paths):
 
-| Suffix | Role |
-| --- | --- |
-| `*.page.tsx` | Route-level component |
-| `*.component.tsx` | Shared/reusable component |
-| `*.store.ts` | Zustand store |
-| `*.api.ts` | Typed API module |
-| `*.client.ts` | Low-level network client |
-| `*.util.ts` | Framework-agnostic helper |
-| `*.types.ts` | Shared TypeScript types |
-| `*.test.ts(x)` | Test, under `src/tests/` mirroring the unit's path |
+| Suffix            | Role                                               |
+| ----------------- | -------------------------------------------------- |
+| `*.page.tsx`      | Route-level component                              |
+| `*.component.tsx` | Shared/reusable component                          |
+| `*.store.ts`      | Zustand store                                      |
+| `*.api.ts`        | Typed API module                                   |
+| `*.client.ts`     | Low-level network client                           |
+| `*.util.ts`       | Framework-agnostic helper                          |
+| `*.types.ts`      | Shared TypeScript types                            |
+| `*.test.ts(x)`    | Test, under `src/tests/` mirroring the unit's path |
 
 ## Code style consistency
 
