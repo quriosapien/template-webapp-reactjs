@@ -28,9 +28,11 @@
 ### Task 1: Project scaffold — toolchain, configs, and a booting app shell
 
 **Files:**
+
 - Create: `.nvmrc`, `.gitignore`, `package.json`, `tsconfig.json`, `biome.json`, `lefthook.yml`, `vite.config.ts`, `index.html`, `.env.example`, `.env.local`, `.vscode/settings.json`, `.vscode/extensions.json`, `src/main.tsx`, `src/app.tsx`, `src/styles/index.css`, `src/types/vite-env.d.ts`, `public/robots.txt`, `src/assets/logo.svg`
 
 **Interfaces:**
+
 - Consumes: nothing (first task).
 - Produces: a building/running Vite app; `@/` alias; npm scripts `dev|build|preview|typecheck|lint|lint:fix|lint:ci|format|test|test:watch|prepare` that every later task relies on.
 
@@ -422,9 +424,11 @@ git commit -m "chore: scaffold Vite + React 19 + TS7 template (Biome, lefthook, 
 ### Task 2: Zod-validated env config
 
 **Files:**
+
 - Create: `src/config/env.ts`, `src/config/index.ts`, `vitest.config.ts`, `src/config/env.test.ts`
 
 **Interfaces:**
+
 - Consumes: nothing.
 - Produces: `parseEnv(raw: Record<string, unknown>): Config` (exported for tests) and `config: Config` — frozen object with `VITE_APP_NAME: string`, `VITE_API_BASE_URL: string`, `VITE_USE_MSW: boolean`. Every later task imports `config` from `@/config` and NEVER touches `import.meta.env`.
 
@@ -565,9 +569,11 @@ git commit -m "feat: add Zod-validated typed env config (Vite-native loading)"
 ### Task 3: JWT utility (decode + expiry check)
 
 **Files:**
+
 - Create: `src/utils/jwt.util.ts`, `src/utils/jwt.util.test.ts`
 
 **Interfaces:**
+
 - Consumes: nothing.
 - Produces: `decodeJwtPayload(token: string): JwtPayload | null` and `isTokenExpired(token: string, skewSeconds?: number): boolean` (default skew 30s). `JwtPayload` = `{ sub?: string; exp?: number; [claim: string]: unknown }`. Used by the HTTP client (Task 6) and MSW handlers (Task 5).
 
@@ -681,9 +687,11 @@ git commit -m "feat: add JWT decode and expiry utilities"
 ### Task 4: Token storage (in-memory access token, persisted refresh token)
 
 **Files:**
+
 - Create: `src/utils/token-storage.util.ts`, `src/utils/token-storage.util.test.ts`
 
 **Interfaces:**
+
 - Consumes: nothing.
 - Produces: `tokenStorage` object: `getAccessToken(): string | null`, `getRefreshToken(): string | null`, `setTokens(accessToken: string, refreshToken: string): void`, `clear(): void`. Used by the HTTP client (Task 6) and auth store (Task 7).
 
@@ -786,10 +794,12 @@ git commit -m "feat: add token storage (in-memory access, persisted refresh)"
 ### Task 5: Auth types + MSW mock API (handlers, node server, browser worker, test wiring)
 
 **Files:**
+
 - Create: `src/types/auth.types.ts`, `src/mocks/handlers.ts`, `src/mocks/handlers.test.ts`, `src/mocks/server.ts`, `src/mocks/browser.ts`, `src/test/setup.ts`, `public/mockServiceWorker.js` (generated)
 - Modify: `vitest.config.ts` (add `setupFiles`), `package.json` (msw worker directory, added by the msw CLI)
 
 **Interfaces:**
+
 - Consumes: `isTokenExpired` from Task 3.
 - Produces:
   - Types: `User { id: string; email: string; name: string }`, `LoginRequest { email: string; password: string }`, `AuthTokens { accessToken: string; refreshToken: string }`, `LoginResponse = AuthTokens & { user: User }`.
@@ -1036,9 +1046,11 @@ git commit -m "feat: add auth types and MSW mock auth API (login/refresh/logout/
 ### Task 6: HTTP client with single-flight refresh + typed auth API
 
 **Files:**
+
 - Create: `src/api/http.client.ts`, `src/api/auth.api.ts`, `src/api/http.client.test.ts`
 
 **Interfaces:**
+
 - Consumes: `config` (Task 2), `tokenStorage` (Task 4), `isTokenExpired` (Task 3), MSW test wiring (Task 5).
 - Produces:
   - `class HttpError extends Error { readonly status: number; readonly body: unknown }`
@@ -1261,9 +1273,11 @@ git commit -m "feat: add fetch HTTP client with single-flight token refresh + au
 ### Task 7: Auth store (Zustand)
 
 **Files:**
+
 - Create: `src/stores/auth.store.ts`, `src/stores/auth.store.test.ts`
 
 **Interfaces:**
+
 - Consumes: `authApi`, `HttpError` (Task 6), `tokenStorage` (Task 4), `makeFakeJwt`/`DEMO_*` (Task 5, tests only).
 - Produces: `useAuthStore` (Zustand hook). State: `user: User | null`, `status: 'idle' | 'loading' | 'authenticated' | 'unauthenticated'`, `error: string | null`. Actions: `login(email: string, password: string): Promise<void>`, `logout(): Promise<void>`, `bootstrap(): Promise<void>`. Used by pages and the route guard (Task 8) and app entry (Task 9).
 
@@ -1418,10 +1432,12 @@ git commit -m "feat: add Zustand auth store (login, logout, session bootstrap)"
 ### Task 8: Router, route guard, and pages
 
 **Files:**
+
 - Create: `src/components/require-auth.component.tsx`, `src/components/require-auth.component.test.tsx`, `src/pages/home.page.tsx`, `src/pages/login.page.tsx`, `src/pages/login.page.test.tsx`, `src/pages/dashboard.page.tsx`, `src/pages/not-found.page.tsx`
 - Modify: `src/app.tsx` (replace placeholder with router)
 
 **Interfaces:**
+
 - Consumes: `useAuthStore` (Task 7), `config` (Task 2), `logo.svg` (Task 1), `DEMO_*` (Task 5, tests only).
 - Produces: `App` component (BrowserRouter + Routes), `RequireAuth` (renders `<Outlet />` when authenticated, redirects to `/login` otherwise), pages `HomePage`, `LoginPage`, `DashboardPage`, `NotFoundPage`. Routes: `/` public, `/login` public, `/dashboard` protected, `*` → NotFound.
 
@@ -1757,9 +1773,11 @@ git commit -m "feat: add router, RequireAuth guard, and pages (home/login/dashbo
 ### Task 9: App entry wiring — MSW in dev + session bootstrap
 
 **Files:**
+
 - Modify: `src/main.tsx`
 
 **Interfaces:**
+
 - Consumes: `config` (Task 2), `worker` (Task 5), `useAuthStore` (Task 7), `App` (Task 8).
 - Produces: the final entrypoint. Dev with `VITE_USE_MSW=true` → MSW worker starts before render; prod builds dead-code-eliminate the mock import (`import.meta.env.DEV` is statically false).
 
@@ -1836,9 +1854,11 @@ git commit -m "feat: wire app entry (MSW in dev, session bootstrap on load)"
 ### Task 10: README + final verification
 
 **Files:**
+
 - Create: `README.md`
 
 **Interfaces:**
+
 - Consumes: everything above.
 - Produces: the template's front door, mirroring template-webserver-ts7's README style.
 
